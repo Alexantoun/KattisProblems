@@ -1,1 +1,1 @@
-I have ceased doing challenges from kattis, and have moved onto Leet-Code
+I have begun using leet-Code and using kattis to learn python
