@@ -2,7 +2,6 @@
 #include <cstring>
 using namespace std;
 
-//You collect password first, so just iterate through
 struct node{
     char data;
     node* next = NULL;
@@ -73,6 +72,8 @@ class linkedList{
 int main()
 {
     linkedList password;
+    if(password.emptyList())
+        cout<<"The List is empty"<<endl;
     char in;
     cin>>in;
     do{
@@ -89,6 +90,12 @@ int main()
         cout<<test<<" is in the list"<<endl;
     else
         cout<<test<<" isn't in the list"<<endl;
+    while(!password.emptyList()){
+        in = password.pop();
+        cout<<"This is at the front: "<<in<<endl;
+    }
+    if(password.emptyList())
+        cout<<"The List is now empty"<<endl;
     //Uncomment all this after testing class
     // queue<char> remaining;
     // char password[9];
