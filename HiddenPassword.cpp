@@ -35,7 +35,6 @@ class linkedList{
 
         void printList(){
             node* curr = head;
-            cout<<"Inside printList()"<<endl;
             while(curr != NULL){
                 cout<<curr->data;
                 curr = curr->next;
@@ -68,50 +67,33 @@ class linkedList{
 
 };
 
-
 int main()
 {
+    //Reading in the password!
     linkedList password;
-    if(password.emptyList())
-        cout<<"The List is empty"<<endl;
     char in;
     cin>>in;
     do{
         password.push(in);
         cin.get(in);
     }while(in != ' ');
-    cout<<"OUT OF LOOP"<<endl;
-    if(password.emptyList())
-        cout<<"emptyList"<<endl;
-    password.printList();
-    char test;
-    cin>>test;
-    if(password.inList(test))
-        cout<<test<<" is in the list"<<endl;
-    else
-        cout<<test<<" isn't in the list"<<endl;
-    while(!password.emptyList()){
-        in = password.pop();
-        cout<<"This is at the front: "<<in<<endl;
+
+    //Reading & testing 'message'
+    char front;
+    while(cin>>in){
+        if(isalpha(in) && password.inList(in)){
+            front = password.pop();
+            if(front!=in){
+                cout<<"FAIL"<<endl;
+                return 0;
+            }
+        }
+        if (cin.peek() == '\n' || password.emptyList())
+            break;
     }
     if(password.emptyList())
-        cout<<"The List is now empty"<<endl;
-    //Uncomment all this after testing class
-    // queue<char> remaining;
-    // char password[9];
-    // cin >> password;
-    
-    // for(int i =0; i < 9; i++){
-    //     if(password[i]!= '\0')
-    //         remaining.push(password[i])
-    //     else   
-    //         break;
-    // }
-
-    // char target;
-    // do{
-    //     cin.get(target);
-    //     if(inList(password, target))
-    // }
-    // return 0;
+        cout<<"PASS"<<endl;
+    else
+        cout<<"FAIL"<<endl;
+    return 0;
 }
