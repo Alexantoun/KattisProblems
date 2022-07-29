@@ -3,9 +3,11 @@
 #include <iomanip>
 using namespace std;
 
+// Syntax candy
 enum units { thou, inch, foot, yard, chain, furlong, mile, league };
 int conversions[8];
 
+//Initializes array
 void initem(int conversions[]){
     conversions[thou] = 1;
     conversions[inch] = 1000;
@@ -17,6 +19,7 @@ void initem(int conversions[]){
     conversions[league] = 3*(conversions[mile]);
 }
 
+//Takes the name of unit as string and returns value of unit thous
 int getValue(string phrase){
     if (phrase[0] =='t')
         return conversions[thou];
