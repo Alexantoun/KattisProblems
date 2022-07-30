@@ -5,10 +5,10 @@ using namespace std;
 
 // Syntax candy
 enum units { thou, inch, foot, yard, chain, furlong, mile, league };
-int conversions[8];
+long conversions[8];
 
 //Initializes array
-void initem(int conversions[]){
+void initem(long conversions[]){
     conversions[thou] = 1;
     conversions[inch] = 1000;
     conversions[foot] = 12*(conversions[inch]);
@@ -20,13 +20,13 @@ void initem(int conversions[]){
 }
 
 //Takes the name of unit as string and returns value of unit thous
-int getValue(string phrase){
+double getValue(string phrase){
     if (phrase[0] =='t')
         return conversions[thou];
     else if(phrase[0] == 'i')
         return conversions[inch];
     else if(phrase[0] == 'f'){
-        if(phrase[1] == 't')
+        if(phrase[1] == 't' || phrase[1]=='o')
             return conversions[foot];
         else
             return conversions[furlong];
@@ -47,7 +47,7 @@ int getValue(string phrase){
 double equation(int value, string numerator, string denominator){
     // cout<<"value in thous is: "<<value*(getValue(numerator))<<endl;
     // cout<<"Denominator in thous is: "<<value*(getValue(denominator))<<endl;
-    return value*(getValue(numerator)*1.0 / getValue(denominator));
+    return value*(getValue(numerator) / getValue(denominator));
 }
 
 int main(){
